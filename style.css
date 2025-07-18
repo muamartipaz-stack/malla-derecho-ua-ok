@@ -66,4 +66,45 @@ h1 {
 }
 
 .ramo.completed {
-  backgrou
+  background-color: #4caf50 !important;
+  color: #fff !important;
+  text-decoration: line-through;
+  box-shadow: 0 0 10px #4caf50ee;
+}
+
+.ramo.locked {
+  background-color: #555;
+  cursor: not-allowed;
+  color: #999;
+  box-shadow: none;
+}
+
+.btn-semestre {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 0;
+  margin: 15px 0 10px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 8px #0066ccaa;
+}
+
+.btn-semestre:hover {
+  background-color: #005bb5;
+  box-shadow: 0 0 12px #005bb5cc;
+}
+
+.container-semestres::-webkit-scrollbar {
+  height: 10px;
+}
+.container-semestres::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+.container-semestres::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 12px;
+}
