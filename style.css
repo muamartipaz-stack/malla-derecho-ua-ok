@@ -1,55 +1,77 @@
+/* Estilos generales */
 body {
   font-family: Arial, sans-serif;
   background-color: #121212; /* fondo negro oscuro */
   color: #ccc;               /* texto gris claro */
   padding: 2rem;
+  margin: 0;
 }
 
 h1 {
-  color: #eee;              /* texto casi blanco */
+  color: #eee;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
+/* Contenedor de semestres en fila */
 .container-semestres {
-  display: flex;            /* semestres en fila */
-  gap: 1.5rem;              /* espacio entre semestres */
-  justify-content: center;  /* centrar horizontalmente */
-  flex-wrap: wrap;          /* que pasen a la siguiente línea si no caben */
-}
-
-.semestre {
-  background-color: #222;   /* fondo gris oscuro */
-  border-radius: 8px;
-  padding: 1rem;
-  width: 200px;             /* ancho fijo para columnas */
   display: flex;
-  flex-direction: column;   /* ramos en vertical */
+  gap: 2rem;               /* espacio entre columnas */
+  justify-content: center;
+  flex-wrap: wrap;         /* saltar a la línea siguiente si no cabe */
 }
 
+/* Cada semestre como columna */
+.semestre {
+  background-color: #222;  /* gris muy oscuro */
+  border-radius: 10px;
+  padding: 1rem;
+  width: 220px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Título del semestre */
+.semestre h2 {
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.5rem;
+}
+
+/* Botones de ramos */
 button.ramo {
-  margin: 0.5rem 0;
-  padding: 0.8rem;
-  font-size: 1rem;
-  background-color: #333;   /* botón gris oscuro */
+  background-color: #333;   /* gris oscuro */
   border: none;
   border-radius: 6px;
-  color: #eee;              /* texto claro */
+  color: #eee;
+  padding: 0.75rem 1rem;
+  margin: 0.3rem 0;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
+  text-align: left;
 }
 
+/* Hover efecto */
 button.ramo:hover {
-  background-color: #555;   /* más claro al pasar mouse */
+  background-color: #555;
 }
 
+/* Ramo completado (tachado y color diferenciado) */
 button.ramo.completado {
+  background-color: #444;
+  color: #999;
   text-decoration: line-through;
-  background-color: #444;   /* fondo más oscuro */
-  color: #999;              /* texto gris claro */
+  cursor: default;
 }
 
+/* Ramo bloqueado (no clickeable) */
 button.ramo.bloqueado {
-  background-color: #111;   /* casi negro */
-  color: #555;              /* texto gris oscuro */
+  background-color: #111;
+  color: #555;
   cursor: not-allowed;
 }
