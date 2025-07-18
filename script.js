@@ -79,6 +79,18 @@ const malla = {
 const container = document.querySelector(".container-semestres");
 const completados = new Set();
 
+function guardarEstado() {
+  localStorage.setItem("malla_completados", JSON.stringify([...completados]));
+}
+
+function cargarEstado() {
+  const datos = localStorage.getItem("malla_completados");
+  if (datos) {
+    const guardados = JSON.parse(datos);
+    guardados.forEach(nombre => completados.add(nombre));
+  }
+}
+
 function crearRamo(ramo, semestreNum) {
   const btn = document.createElement("button");
   btn.classList.add("ramo");
@@ -103,6 +115,12 @@ function crearRamo(ramo, semestreNum) {
     btn.classList.add("locked");
     btn.disabled = true;
     btn.dataset.prerequisitos = JSON.stringify(prereqs);
+  }
+
+  // Marcar si ya estaba completado
+  if (completados.has(nombre)) {
+    btn.classList.add("completed");
+    btn.disabled = false;
   }
 
   btn.addEventListener("click", () => {
@@ -152,70 +170,17 @@ function verificarDesbloqueos() {
   });
 }
 
-function marcarSemestreCompleto(semestreNum) {
-  const botones = container.querySelectorAll(`.semestre[data-semestre='${semestreNum}'] .ramo:not(.locked)`);
-  botones.forEach(btn => {
-    if (!btn.classList.contains("completed")) {
-      btn.classList.add("completed");
-      completados.add(btn.dataset.nombre);
-    }
+cargarEstado();
+
+for (let semestre in malla) {
+  const div = document.createElement("div");
+  div.classList.add("semestre");
+  div.innerHTML = `<h2>${semestre}° Semestre</h2>`;
+  malla[semestre].forEach(ramo => {
+    const btn = crearRamo(ramo, semestre);
+    div.appendChild(btn);
   });
-  guardarEstado();
-  verificarDesbloqueos();
+  container.appendChild(div);
 }
 
-function guardarEstado() {
-  localStorage.setItem("malla_completados", JSON.stringify([...completados]));
-}
-
-function cargarEstado() {
-  const datos = localStorage.getItem("malla_completados");
-  if (datos) {
-    const guardados = JSON.parse(datos);
-    guardados.forEach(nombre => completados.add(nombre));
-  }
-}
-
-function crearBotonSemestreCompleto(semestreDiv, semestreNum) {
-  const btn = document.createElement("button");
-  btn.textContent = "Marcar semestre completo";
-  btn.classList.add("semestre-completo");
-  btn.addEventListener("click", () => {
-    marcarSemestreCompleto(semestreNum);
-  });
-  semestreDiv.appendChild(btn);
-}
-
-function crearUI() {
-  container.innerHTML = "";
-
-  for (let semestre in malla) {
-    const div = document.createElement("div");
-    div.classList.add("semestre");
-    div.dataset.semestre = semestre;
-    div.innerHTML = `<h2>${semestre}° Semestre</h2>`;
-
-    malla[semestre].forEach(ramo => {
-      const btn = crearRamo(ramo, semestre);
-      div.appendChild(btn);
-    });
-
-    crearBotonSemestreCompleto(div, semestre);
-
-    container.appendChild(div);
-  }
-}
-
-function init() {
-  cargarEstado();
-  crearUI();
-  verificarDesbloqueos();
-  // Reaplicar estilos a los que ya están completados
-  document.querySelectorAll("button.ramo").forEach(btn => {
-    if (completados.has(btn.dataset.nombre)) {
-      btn.classList.add("completed");
-    }
-  });
-}
-
-init();
+verificarDesbloqueos();
