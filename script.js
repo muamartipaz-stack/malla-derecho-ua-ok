@@ -76,14 +76,17 @@ const malla = {
   ]
 };
 
-// Set para ramos completados, cargado desde localStorage
+const container = document.querySelector(".container-semestres");
 const completados = new Set();
-const ramosGuardados = localStorage.getItem("ramosMarcados");
-if (ramosGuardados) {
-  JSON.parse(ramosGuardados).forEach(ramo => completados.add(ramo));
+
+function cargarCompletados() {
+  const guardados = JSON.parse(localStorage.getItem('ramosCompletados') || "[]");
+  guardados.forEach(nombre => completados.add(nombre));
 }
 
-const container = document.querySelector(".container-semestres");
+function guardarCompletados() {
+  localStorage.setItem('ramosCompletados', JSON.stringify(Array.from(completados)));
+}
 
 function crearRamo(ramo, semestreNum) {
   const btn = document.createElement("button");
@@ -111,10 +114,8 @@ function crearRamo(ramo, semestreNum) {
     btn.dataset.prerequisitos = JSON.stringify(prereqs);
   }
 
-  // Si este ramo ya estaba marcado, reflejarlo:
   if (completados.has(nombre)) {
     btn.classList.add("completed");
-    btn.disabled = false;
   }
 
   btn.addEventListener("click", () => {
@@ -122,16 +123,13 @@ function crearRamo(ramo, semestreNum) {
 
     btn.classList.toggle("completed");
 
-    const nombreRamo = btn.dataset.nombre;
     if (btn.classList.contains("completed")) {
-      completados.add(nombreRamo);
+      completados.add(nombre);
     } else {
-      completados.delete(nombreRamo);
+      completados.delete(nombre);
     }
 
-    // Guardar cambios en localStorage
-    localStorage.setItem("ramosMarcados", JSON.stringify(Array.from(completados)));
-
+    guardarCompletados();
     verificarDesbloqueos();
   });
 
@@ -166,17 +164,20 @@ function verificarDesbloqueos() {
   });
 }
 
-// Crear UI completa
-for (let semestre in malla) {
-  const div = document.createElement("div");
-  div.classList.add("semestre");
-  div.innerHTML = `<h2>${semestre}° Semestre</h2>`;
-  malla[semestre].forEach(ramo => {
-    const btn = crearRamo(ramo, semestre);
-    div.appendChild(btn);
-  });
-  container.appendChild(div);
+function crearMalla() {
+  container.innerHTML = "";
+  for (let semestre in malla) {
+    const div = document.createElement("div");
+    div.classList.add("semestre");
+    div.innerHTML = `<h2>${semestre}° Semestre</h2>`;
+    malla[semestre].forEach(ramo => {
+      const btn = crearRamo(ramo, semestre);
+      div.appendChild(btn);
+    });
+    container.appendChild(div);
+  }
+  verificarDesbloqueos();
 }
 
-// Aplicar desbloqueos al cargar para ajustar estados
-verificarDesbloqueos();
+cargarCompletados();
+crearMalla();
