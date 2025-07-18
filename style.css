@@ -1,32 +1,51 @@
-/* Estilos generales */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212; /* fondo negro oscuro */
-  color: #ccc;               /* texto gris claro */
-  padding: 2rem;
-  margin: 0;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malla Derecho</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Malla Curricular - Derecho</h1>
 
-h1 {
-  color: #eee;
-  text-align: center;
-  margin-bottom: 2rem;
-}
+  <div class="container-semestres">
 
-/* Contenedor de semestres: fila horizontal */
-.container-semestres {
-  display: flex;
-  flex-wrap: wrap;       /* saltar a la siguiente línea si no caben todos */
-  gap: 1.5rem;           /* espacio entre columnas */
-  justify-content: center;
-}
+    <div class="semestre" id="semestre1">
+      <h2>1° Semestre</h2>
+      <button class="ramo">Introducción al Derecho</button>
+      <button class="ramo">Historia del Derecho</button>
+      <button class="ramo">Historia y Evolución de las Instituciones Civiles</button>
+      <button class="ramo">Electivo de Comunicación</button>
+    </div>
 
-/* Cada semestre: columna vertical */
-.semestre {
-  display: flex;
-  flex-direction: column;
-  width: 220px;          /* ancho fijo para columnas iguales */
-  background-color: #222; /* gris oscuro */
-  padding: 1rem;
-  border-radius: 10px;
-  box-
+    <div class="semestre" id="semestre2">
+      <h2>2° Semestre</h2>
+      <button class="ramo">Fundamentos Filosóficos del Derecho</button>
+      <button class="ramo">Historia Institucional de Chile</button>
+      <button class="ramo">Introducción a la Economía</button>
+      <button class="ramo">Electivo de Comunicación II</button>
+    </div>
+
+    <div class="semestre" id="semestre3">
+      <h2>3° Semestre</h2>
+      <button class="ramo">Derecho Romano I</button>
+      <button class="ramo">Derecho Civil I</button>
+      <button class="ramo">Derecho Penal I</button>
+      <button class="ramo">Derecho Constitucional I</button>
+    </div>
+
+    <div class="semestre" id="semestre4">
+      <h2>4° Semestre</h2>
+      <button class="ramo">Derecho Romano II</button>
+      <button class="ramo">Derecho Civil II</button>
+      <button class="ramo">Derecho Penal II</button>
+      <button class="ramo">Derecho Constitucional II</button>
+    </div>
+
+    <div class="semestre" id="semestre5">
+      <h2>5° Semestre</h2>
+      <button class="ramo">Derecho Procesal Civil</button>
+      <button class="ramo">Derecho Laboral</button>
+      <button class="ramo">Derecho Administrativo</button>
+      <button class="
