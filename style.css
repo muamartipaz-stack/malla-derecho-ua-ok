@@ -1,62 +1,37 @@
 body {
-  background-color: #121212;
-  color: #f0f0f0;
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
+  background-color: #121212;
+  color: #ddd;
+  margin: 20px;
+  padding: 0;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  color: #eee;
 }
 
+/* Contenedor para semestres: fila horizontal, scroll en móvil */
 .container-semestres {
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
+/* Cada semestre como columna vertical */
 .semestre {
   background-color: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
+  border: 1px solid #333;
+  border-radius: 8px;
   min-width: 220px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  padding: 15px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-.semestre h2 {
-  text-align: center;
-  font-size: 1.2em;
-  color: #ccc;
-  margin-bottom: 10px;
-}
-
-.ramo {
-  display: block;
-  width: 100%;
-  margin: 6px 0;
-  padding: 8px;
-  background-color: #2e2e2e;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.ramo:hover {
-  background-color: #444;
-}
-
-.ramo.locked {
-  background-color: #555;
-  color: #999;
-  cursor: not-allowed;
-}
-
-.ramo.completed {
-  text-decoration: line-through;
-  background-color: #0a6847;
-}
+/* Título semestre */
+.semestr
