@@ -1,51 +1,62 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Malla Derecho</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <h1>Malla Curricular - Derecho</h1>
+body {
+  background-color: #121212;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
 
-  <div class="container-semestres">
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    <div class="semestre" id="semestre1">
-      <h2>1° Semestre</h2>
-      <button class="ramo">Introducción al Derecho</button>
-      <button class="ramo">Historia del Derecho</button>
-      <button class="ramo">Historia y Evolución de las Instituciones Civiles</button>
-      <button class="ramo">Electivo de Comunicación</button>
-    </div>
+.container-semestres {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
 
-    <div class="semestre" id="semestre2">
-      <h2>2° Semestre</h2>
-      <button class="ramo">Fundamentos Filosóficos del Derecho</button>
-      <button class="ramo">Historia Institucional de Chile</button>
-      <button class="ramo">Introducción a la Economía</button>
-      <button class="ramo">Electivo de Comunicación II</button>
-    </div>
+.semestre {
+  background-color: #1e1e1e;
+  padding: 15px;
+  border-radius: 10px;
+  min-width: 220px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
 
-    <div class="semestre" id="semestre3">
-      <h2>3° Semestre</h2>
-      <button class="ramo">Derecho Romano I</button>
-      <button class="ramo">Derecho Civil I</button>
-      <button class="ramo">Derecho Penal I</button>
-      <button class="ramo">Derecho Constitucional I</button>
-    </div>
+.semestre h2 {
+  text-align: center;
+  font-size: 1.2em;
+  color: #ccc;
+  margin-bottom: 10px;
+}
 
-    <div class="semestre" id="semestre4">
-      <h2>4° Semestre</h2>
-      <button class="ramo">Derecho Romano II</button>
-      <button class="ramo">Derecho Civil II</button>
-      <button class="ramo">Derecho Penal II</button>
-      <button class="ramo">Derecho Constitucional II</button>
-    </div>
+.ramo {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 8px;
+  background-color: #2e2e2e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-    <div class="semestre" id="semestre5">
-      <h2>5° Semestre</h2>
-      <button class="ramo">Derecho Procesal Civil</button>
-      <button class="ramo">Derecho Laboral</button>
-      <button class="ramo">Derecho Administrativo</button>
-      <button class="
+.ramo:hover {
+  background-color: #444;
+}
+
+.ramo.locked {
+  background-color: #555;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.ramo.completed {
+  text-decoration: line-through;
+  background-color: #0a6847;
+}
