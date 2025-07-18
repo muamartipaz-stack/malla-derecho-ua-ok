@@ -1,56 +1,55 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #121212; /* negro oscuro */
-  color: #ccc; /* gris claro para texto */
+  background-color: #121212; /* fondo negro oscuro */
+  color: #ccc;               /* texto gris claro */
   padding: 2rem;
 }
 
 h1 {
-  color: #eee; /* gris muy claro */
+  color: #eee;              /* texto casi blanco */
   text-align: center;
 }
 
-.semestre {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: #222; /* gris oscuro */
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column; /* los ramos en columna vertical */
-  width: 200px;
+.container-semestres {
+  display: flex;            /* semestres en fila */
+  gap: 1.5rem;              /* espacio entre semestres */
+  justify-content: center;  /* centrar horizontalmente */
+  flex-wrap: wrap;          /* que pasen a la siguiente línea si no caben */
 }
 
-.container-semestres {
+.semestre {
+  background-color: #222;   /* fondo gris oscuro */
+  border-radius: 8px;
+  padding: 1rem;
+  width: 200px;             /* ancho fijo para columnas */
   display: flex;
-  gap: 1rem;
-  justify-content: center; /* centrar semestres horizontalmente */
-  flex-wrap: wrap; /* que se acomoden si no caben */
+  flex-direction: column;   /* ramos en vertical */
 }
 
 button.ramo {
   margin: 0.5rem 0;
   padding: 0.8rem;
   font-size: 1rem;
-  background-color: #333; /* botón gris oscuro */
+  background-color: #333;   /* botón gris oscuro */
   border: none;
   border-radius: 6px;
-  color: #eee;
+  color: #eee;              /* texto claro */
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button.ramo:hover {
-  background-color: #555; /* más claro al pasar mouse */
+  background-color: #555;   /* más claro al pasar mouse */
 }
 
 button.ramo.completado {
   text-decoration: line-through;
-  background-color: #444; /* más oscuro para completados */
-  color: #999;
+  background-color: #444;   /* fondo más oscuro */
+  color: #999;              /* texto gris claro */
 }
 
 button.ramo.bloqueado {
-  background-color: #111; /* casi negro */
-  color: #555;
+  background-color: #111;   /* casi negro */
+  color: #555;              /* texto gris oscuro */
   cursor: not-allowed;
 }
