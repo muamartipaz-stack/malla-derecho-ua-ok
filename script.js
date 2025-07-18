@@ -76,20 +76,14 @@ const malla = {
   ]
 };
 
-const container = document.querySelector(".container-semestres");
+// Set para ramos completados, cargado desde localStorage
 const completados = new Set();
-
-function guardarEstado() {
-  localStorage.setItem("malla_completados", JSON.stringify([...completados]));
+const ramosGuardados = localStorage.getItem("ramosMarcados");
+if (ramosGuardados) {
+  JSON.parse(ramosGuardados).forEach(ramo => completados.add(ramo));
 }
 
-function cargarEstado() {
-  const datos = localStorage.getItem("malla_completados");
-  if (datos) {
-    const guardados = JSON.parse(datos);
-    guardados.forEach(nombre => completados.add(nombre));
-  }
-}
+const container = document.querySelector(".container-semestres");
 
 function crearRamo(ramo, semestreNum) {
   const btn = document.createElement("button");
@@ -117,7 +111,7 @@ function crearRamo(ramo, semestreNum) {
     btn.dataset.prerequisitos = JSON.stringify(prereqs);
   }
 
-  // Marcar si ya estaba completado
+  // Si este ramo ya estaba marcado, reflejarlo:
   if (completados.has(nombre)) {
     btn.classList.add("completed");
     btn.disabled = false;
@@ -135,7 +129,9 @@ function crearRamo(ramo, semestreNum) {
       completados.delete(nombreRamo);
     }
 
-    guardarEstado();
+    // Guardar cambios en localStorage
+    localStorage.setItem("ramosMarcados", JSON.stringify(Array.from(completados)));
+
     verificarDesbloqueos();
   });
 
@@ -170,8 +166,7 @@ function verificarDesbloqueos() {
   });
 }
 
-cargarEstado();
-
+// Crear UI completa
 for (let semestre in malla) {
   const div = document.createElement("div");
   div.classList.add("semestre");
@@ -183,4 +178,5 @@ for (let semestre in malla) {
   container.appendChild(div);
 }
 
+// Aplicar desbloqueos al cargar para ajustar estados
 verificarDesbloqueos();
