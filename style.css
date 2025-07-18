@@ -13,7 +13,6 @@ h1 {
   font-size: 2.2rem;
 }
 
-/* Contenedor para semestres: fila horizontal, scroll en móvil */
 .container-semestres {
   display: flex;
   gap: 25px;
@@ -23,7 +22,6 @@ h1 {
   scrollbar-color: #444 #1e1e1e;
 }
 
-/* Cada semestre como columna vertical */
 .semestre {
   background-color: #1e1e1e;
   border: 1px solid #333;
@@ -38,7 +36,6 @@ h1 {
   box-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
-/* Título semestre */
 .semestre h2 {
   color: #ccc;
   margin-bottom: 18px;
@@ -47,7 +44,6 @@ h1 {
   font-weight: 600;
 }
 
-/* Botones de ramos */
 .ramo {
   background-color: #2a2a2a;
   color: #ddd;
@@ -70,47 +66,4 @@ h1 {
 }
 
 .ramo.completed {
-  background-color: #4caf50; /* Verde vibrante */
-  color: #fff;
-  text-decoration: line-through;
-  box-shadow: 0 0 10px #4caf50ee;
-}
-
-.ramo.locked {
-  background-color: #555;
-  cursor: not-allowed;
-  color: #999;
-  box-shadow: none;
-}
-
-/* Botón para marcar semestre completo */
-.btn-semestre {
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  padding: 12px 0;
-  margin: 15px 0 10px 0;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 0 8px #0066ccaa;
-}
-
-.btn-semestre:hover {
-  background-color: #005bb5;
-  box-shadow: 0 0 12px #005bb5cc;
-}
-
-/* Scrollbar para .container-semestres */
-.container-semestres::-webkit-scrollbar {
-  height: 10px;
-}
-.container-semestres::-webkit-scrollbar-track {
-  background: #1e1e1e;
-}
-.container-semestres::-webkit-scrollbar-thumb {
-  background-color: #444;
-  border-radius: 12px;
-}
+  backgrou
