@@ -13,65 +13,20 @@ h1 {
   margin-bottom: 2rem;
 }
 
-/* Contenedor de semestres en fila */
+/* Contenedor de semestres: fila horizontal */
 .container-semestres {
   display: flex;
-  gap: 2rem;               /* espacio entre columnas */
+  flex-wrap: wrap;       /* saltar a la siguiente línea si no caben todos */
+  gap: 1.5rem;           /* espacio entre columnas */
   justify-content: center;
-  flex-wrap: wrap;         /* saltar a la línea siguiente si no cabe */
 }
 
-/* Cada semestre como columna */
+/* Cada semestre: columna vertical */
 .semestre {
-  background-color: #222;  /* gris muy oscuro */
-  border-radius: 10px;
-  padding: 1rem;
-  width: 220px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-}
-
-/* Título del semestre */
-.semestre h2 {
-  color: #fff;
-  margin-bottom: 1rem;
-  text-align: center;
-  border-bottom: 1px solid #444;
-  padding-bottom: 0.5rem;
-}
-
-/* Botones de ramos */
-button.ramo {
-  background-color: #333;   /* gris oscuro */
-  border: none;
-  border-radius: 6px;
-  color: #eee;
-  padding: 0.75rem 1rem;
-  margin: 0.3rem 0;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-align: left;
-}
-
-/* Hover efecto */
-button.ramo:hover {
-  background-color: #555;
-}
-
-/* Ramo completado (tachado y color diferenciado) */
-button.ramo.completado {
-  background-color: #444;
-  color: #999;
-  text-decoration: line-through;
-  cursor: default;
-}
-
-/* Ramo bloqueado (no clickeable) */
-button.ramo.bloqueado {
-  background-color: #111;
-  color: #555;
-  cursor: not-allowed;
-}
+  width: 220px;          /* ancho fijo para columnas iguales */
+  background-color: #222; /* gris oscuro */
+  padding: 1rem;
+  border-radius: 10px;
+  box-
