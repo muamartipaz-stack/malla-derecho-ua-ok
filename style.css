@@ -1,58 +1,56 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #fafafa;
-  color: #333;
+  background-color: #121212; /* negro oscuro */
+  color: #ccc; /* gris claro para texto */
   padding: 2rem;
-  max-width: 900px;
-  margin: auto;
 }
 
 h1 {
-  color: #2a2a72;
+  color: #eee; /* gris muy claro */
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 .semestre {
-  margin-bottom: 2rem;
+  margin: 1rem;
   padding: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(42, 42, 114, 0.1);
+  background-color: #222; /* gris oscuro */
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column; /* los ramos en columna vertical */
+  width: 200px;
 }
 
-.semestre.bloqueado {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-h2 {
-  color: #444;
-  margin-bottom: 1rem;
+.container-semestres {
+  display: flex;
+  gap: 1rem;
+  justify-content: center; /* centrar semestres horizontalmente */
+  flex-wrap: wrap; /* que se acomoden si no caben */
 }
 
 button.ramo {
-  display: block;
-  width: 100%;
-  text-align: left;
   margin: 0.5rem 0;
-  padding: 0.7rem 1rem;
+  padding: 0.8rem;
   font-size: 1rem;
-  background-color: #e4e9ff;
+  background-color: #333; /* botón gris oscuro */
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  color: #eee;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 button.ramo:hover {
-  background-color: #c4cdfb;
+  background-color: #555; /* más claro al pasar mouse */
 }
 
 button.ramo.completado {
   text-decoration: line-through;
-  background-color: #a2d5a2;
-  color: #1a4d1a;
+  background-color: #444; /* más oscuro para completados */
+  color: #999;
 }
 
+button.ramo.bloqueado {
+  background-color: #111; /* casi negro */
+  color: #555;
+  cursor: not-allowed;
+}
